@@ -10,7 +10,7 @@ import { dataStore } from '../../global/data.global';
 //=============================================>  RENDER
 const StageComponent = () => {
   const router = useRouter();
-  const { data: Data } = dataStore((state) => state);
+  const { data: Data, setData } = dataStore();
 
   return (
     <Container>

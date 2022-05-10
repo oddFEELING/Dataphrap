@@ -4,58 +4,16 @@ import React, { useId, useEffect, useRef } from 'react';
 import highcharts from 'Highcharts';
 import Script from 'next/script';
 import NavLayout from '../layout/nav.layout';
+import { optionStore } from '../global/options/options.global';
 
 const Chart = () => {
   const ChartId = useId;
   const chartref = useRef();
+  const { options } = optionStore();
 
   useEffect(() => {
     highcharts.chart(chartref.current, {
-      navigation: {
-        buttonOptions: {
-          theme: {
-            // Good old text links
-            style: {
-              color: '#039',
-              textDecoration: 'underline',
-            },
-          },
-        },
-      },
-
-      exporting: {
-        buttons: {
-          contextButton: {
-            enabled: true,
-          },
-        },
-      },
-
-      chart: {
-        type: 'bar',
-        renderTo: ChartId,
-      },
-      title: {
-        text: 'Fruit Consumption',
-      },
-      xAxis: {
-        categories: ['Apples', 'Bananas', 'Oranges'],
-      },
-      yAxis: {
-        title: {
-          text: 'Fruit eaten',
-        },
-      },
-      series: [
-        {
-          name: 'Jane',
-          data: [1, 0, 4],
-        },
-        {
-          name: 'John',
-          data: [5, 7, 3],
-        },
-      ],
+      ...options,
     });
   }, []);
   return (
@@ -68,7 +26,6 @@ const Chart = () => {
         justifyContent: 'center',
       }}
     >
-      {' '}
       <div
         id={ChartId}
         style={{ width: '80%', height: '800px' }}

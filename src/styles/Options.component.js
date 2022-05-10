@@ -2,26 +2,37 @@
 
 import styled from 'styled-components';
 
-export const Container = styled.main`
+export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   padding: 40px;
   flex-direction: column;
   justify-content: space-between;
+  transition: ${({ theme }) => theme.transition()};
   background-color: ${({ theme }) => theme.colors.lt_2()};
+`;
+
+export const Main = styled.main`
+  gap: 4vw;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-self: start;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const OptionWrapper = styled.div`
   gap: 1.5vh;
-  width: 90%;
+  width: 50%;
   height: 90%;
   padding: 1vw;
   display: flex;
   position: relative;
-  align-self: center;
   flex-direction: column;
   box-shadow: ${({ theme }) => theme.shadow.lg};
+  border-radius: ${({ theme }) => theme.radius.sm};
 `;
 
 export const TagWrapper = styled.div`
