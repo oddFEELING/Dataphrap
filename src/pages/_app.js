@@ -1,6 +1,5 @@
 /** 🌹oddFEELING */
 
-import NavLayout from '../layout/nav.layout';
 import '../styles/globals.css';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../components/Theme';

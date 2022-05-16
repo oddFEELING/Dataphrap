@@ -33,7 +33,10 @@ const Options = () => {
         {' '}
         <OptionWrapper>
           <h3>Set Chart type: </h3>
-          <Selector onChange={(e) => optStore.setType(e.target.value)}>
+          <Selector
+            value={optStore.options.chart.type}
+            onChange={(e) => optStore.setType(e.target.value)}
+          >
             <option>- Select type -</option>
             <option value='line'>Line</option>
             <option value='bar'>Bar</option>
@@ -47,7 +50,18 @@ const Options = () => {
             <h3>Chart Title: </h3>
             <OptionInput
               type='text'
+              value={optStore.options.title.text}
               onChange={(e) => optStore.setTitle(e.target.value)}
+            />
+          </TagWrapper>
+
+          {/* ====== x axis name */}
+          <TagWrapper>
+            <h3> X axis Name: </h3>
+            <OptionInput
+              type='text'
+              value={optStore.options.xAxis.title.text}
+              onChange={(e) => optStore.setXName(e.target.value)}
             />
           </TagWrapper>
 
@@ -56,20 +70,11 @@ const Options = () => {
             <h3>Y axis Name: </h3>
             <OptionInput
               type='text'
+              value={optStore.options.yAxis.title.text}
               onChange={(e) => optStore.setYName(e.target.value)}
             />
-            {optStore.options.yAxis.title.text}
           </TagWrapper>
 
-          {/* ====== x axis name */}
-          <TagWrapper>
-            <h3> X axis Name: </h3>
-            <OptionInput
-              type='text'
-              onChange={(e) => optStore.setXName(e.target.value)}
-            />
-            {optStore.options.xAxis.title.text}
-          </TagWrapper>
           {/* ====== next button */}
           <ButtonComponent
             success

@@ -5,17 +5,24 @@ import highcharts from 'Highcharts';
 import Script from 'next/script';
 import NavLayout from '../layout/nav.layout';
 import { optionStore } from '../global/options/options.global';
+import useLineSeries from '../logic/useLineSeries';
+import useBarSeries from '../logic/useBarSeries';
 
 const Chart = () => {
   const ChartId = useId;
   const chartref = useRef();
   const { options } = optionStore();
 
+  console.log(options.chart.type);
+
   useEffect(() => {
-    highcharts.chart(chartref.current, {
-      ...options,
-    });
-  }, []);
+    console.log(options);
+    options &&
+      highcharts.chart(chartref.current, {
+        ...options,
+      });
+  }, [options]);
+
   return (
     <div
       style={{

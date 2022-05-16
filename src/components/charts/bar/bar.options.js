@@ -1,6 +1,6 @@
 /** 🌹oddFEELING */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { dataStore } from '../../../global/data.global';
 import {
@@ -8,12 +8,19 @@ import {
   Selector,
   TagWrapper,
 } from '../../../styles/Options.component';
+import loggerUtility from '../../../utilities/logger.utility';
 import { barStore } from '../../../global/charts/bar,global';
+import useBarSeries from '../../../logic/useBarSeries';
 
 //=============================================>  RENDER
 const BarOptions = () => {
   const { fields } = dataStore();
   const { name, x, y, setter } = barStore();
+
+  useBarSeries();
+  useEffect(() => {
+    loggerUtility.info('The Bar options have changed!');
+  }, [name, x, y]);
 
   return (
     <Container>
@@ -36,7 +43,7 @@ const BarOptions = () => {
 
       <TagWrapper>
         <h3>Y Axis: </h3>
-        <Selector value={y} onchange={(e) => setter('y', e.target.value)}>
+        <Selector value={y} onChange={(e) => setter('y', e.target.value)}>
           <option>- Y axis data -</option>
           {fields &&
             fields.map((field, index) => {

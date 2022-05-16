@@ -49,7 +49,7 @@ const PreviewTable = () => {
                 {DataValues.map((key, index) => {
                   return (
                     <TableCell key={index} sx={{ border: 'thin solid grey' }}>
-                      {key}
+                      {key ? key : 0}
                     </TableCell>
                   );
                 })}
